@@ -2,7 +2,7 @@ name: Cron Job untuk Membuka API Setiap Menit
 
 on:
   schedule:
-    - cron: '* * * * *'  # Menjalankan setiap menit
+    - cron: '*/1 * * * *'  # Menjalankan setiap menit
   workflow_dispatch:  # Memungkinkan menjalankan secara manual dari UI GitHub (opsional)
 
 jobs:
