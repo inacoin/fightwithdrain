@@ -1,0 +1,20 @@
+name: Cron Job to Open API Every Minute
+
+on:
+  schedule:
+    - cron: '* * * * *'  # Menjalankan setiap menit
+  workflow_dispatch:  # Memungkinkan menjalankan secara manual dari UI GitHub
+
+jobs:
+  fetch-api-data:
+    runs-on: ubuntu-latest  # Menjalankan di runner Ubuntu
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Jika perlu melakukan checkout code (jika ada script di repo)
+
+      - name: Fetch and save data to file
+        run: |
+          echo "Fetching data from the API..."
+          curl https://geckoterminal.vercel.app/api/data -o api_response.json
+          cat api_response.json
